@@ -8,31 +8,30 @@ import java.util.Arrays;
 public class TrackDTO {
 
     private String id;
-
     private String name;
-
     private int km;
-
     private int[] lanes;
-
     private int[][] racecourse;
+    private boolean isCompleted;
 
     public TrackDTO() {
     }
 
-    public TrackDTO(String name, int km, int[] lanes, int[][] racecourse) {
+    public TrackDTO(String name, int km, int[] lanes, int[][] racecourse, boolean isCompleted) {
         this.name = name;
         this.km = km;
         this.lanes = lanes;
         this.racecourse = racecourse;
+        this.isCompleted = isCompleted;
     }
 
-    public TrackDTO(String id, String name, int km, int[] lanes, int[][] racecourse) {
+    public TrackDTO(String id, String name, int km, int[] lanes, int[][] racecourse, boolean isCompleted) {
         this.id = id;
         this.name = name;
         this.km = km;
         this.lanes = lanes;
         this.racecourse = racecourse;
+        this.isCompleted = isCompleted;
     }
 
     public String getId() {
@@ -73,5 +72,13 @@ public class TrackDTO {
 
     public void setRacecourse(int[][] racecourse) {
         this.racecourse = racecourse;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
     }
 }

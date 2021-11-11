@@ -12,6 +12,15 @@ public class Track {
     private int km;
     private int[] lanes;
     private int[][] racecourse;
+    private boolean isCompleted;
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
 
     public String getId() {
         return id;

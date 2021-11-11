@@ -22,11 +22,11 @@ public class MoveHorsesUseCase {
         this.getTrackUseCase = getTrackUseCase;
     }
 
-    public int randomNumber(){
+    private int randomNumber(){
         return (int) Math.floor(Math.random()*6+1);
     }
 
-    public int getPosition(int[][] racecourse, int lane){
+    private int getPosition(int[][] racecourse, int lane){
         int position = 0;
 
         for(int i=0;i<racecourse[0].length;i++){
@@ -41,10 +41,25 @@ public class MoveHorsesUseCase {
         return position;
     }
 
-    public TrackDTO moveHorses(TrackDTO trackDTO){
+    private boolean isTrackCompleted(int [][] racecourse, int lane){
 
-        int lanes = trackDTO.getLanes().length;
-        int km = trackDTO.getKm()*10;
+        final int km = racecourse[0].length;
+
+        for(int i=0;i<lane;i++){
+
+            if(racecourse[i][km-1] != 0){
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private TrackDTO moveHorses(TrackDTO trackDTO){
+
+        final int lanes = trackDTO.getLanes().length;
+        final int km = trackDTO.getKm()*10;
 
         int[][] racecourse = new int[lanes][km];
 
@@ -66,12 +81,14 @@ public class MoveHorsesUseCase {
 
         trackDTO.setRacecourse(racecourse);
 
+        if(isTrackCompleted(racecourse,lanes)){
+            trackDTO.setCompleted(true);
+        }
         return trackDTO;
     }
 
-    public Mono<String> apply(TrackDTO trackDTO) {
-
-        return getTrackUseCase.apply(trackDTO.getId()).flatMap(
+    public Mono<String> apply(String idTrack) {
+        return getTrackUseCase.apply(idTrack).flatMap(
                 foundTrackDTO -> updateTrackUseCase.apply(moveHorses(foundTrackDTO))
         );
     }

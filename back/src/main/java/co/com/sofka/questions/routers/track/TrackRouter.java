@@ -53,7 +53,7 @@ public class TrackRouter {
 
     @Bean
     public RouterFunction<ServerResponse> moveHorse(MoveHorsesUseCase moveHorsesUseCase) {
-        Function<TrackDTO, Mono<ServerResponse>> executor = trackDTO ->  moveHorsesUseCase.apply(trackDTO)
+        Function<TrackDTO, Mono<ServerResponse>> executor = trackDTO ->  moveHorsesUseCase.apply(trackDTO.getId())
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(result));

@@ -29,7 +29,7 @@ public class CreateTrackUseCase implements SaveTrack {
 
         int[][] racecourse = new int[trackDTO.getLanes().length][trackDTO.getKm()*10];
         trackDTO.setRacecourse(racecourse);
-
+        trackDTO.setCompleted(false);
         return trackRepository
                 .save(mapperTrack.mapperToTrack(null).apply(trackDTO))
                 .map(Track::getId);
