@@ -1,17 +1,30 @@
-package co.com.sofka.questions.collections;
+package co.com.sofka.questions.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+public class GameDTO {
 
-@Document
-public class Game {
-
-    @Id
     private String id;
     private String idTrack;
     private String idUser;
     private boolean inGame;
     private int laneWinner;
+
+    public GameDTO() {
+    }
+
+    public GameDTO(String idTrack, String idUser, boolean inGame, int laneWinner) {
+        this.idTrack = idTrack;
+        this.idUser = idUser;
+        this.inGame = inGame;
+        this.laneWinner = laneWinner;
+    }
+
+    public GameDTO(String id, String idTrack, String idUser, boolean inGame, int laneWinner) {
+        this.id = id;
+        this.idTrack = idTrack;
+        this.idUser = idUser;
+        this.inGame = inGame;
+        this.laneWinner = laneWinner;
+    }
 
     public String getId() {
         return id;

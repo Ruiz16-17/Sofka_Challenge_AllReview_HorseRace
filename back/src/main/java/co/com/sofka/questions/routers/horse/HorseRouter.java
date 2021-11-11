@@ -1,15 +1,10 @@
 package co.com.sofka.questions.routers.horse;
 
-import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.HorseDTO;
-import co.com.sofka.questions.model.QuestionDTO;
-import co.com.sofka.questions.service.SendMailService;
-import co.com.sofka.questions.usecases.answer.AddAnswerUseCase;
 import co.com.sofka.questions.usecases.horse.CreateHorseUseCase;
 import co.com.sofka.questions.usecases.horse.GetHorseUseCase;
 import co.com.sofka.questions.usecases.horse.UpdateHorseUseCase;
 import co.com.sofka.questions.usecases.horse.UpdatePositionHorseUseCase;
-import co.com.sofka.questions.usecases.question.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

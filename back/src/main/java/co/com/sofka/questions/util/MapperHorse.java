@@ -1,13 +1,7 @@
 package co.com.sofka.questions.util;
 
-import co.com.sofka.questions.collections.Answer;
-import co.com.sofka.questions.collections.FavoriteQuestion;
 import co.com.sofka.questions.collections.Horse;
-import co.com.sofka.questions.collections.Question;
-import co.com.sofka.questions.model.AnswerDTO;
-import co.com.sofka.questions.model.FavoriteQuestionDTO;
 import co.com.sofka.questions.model.HorseDTO;
-import co.com.sofka.questions.model.QuestionDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

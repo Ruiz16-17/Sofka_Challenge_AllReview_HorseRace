@@ -1,8 +1,6 @@
 package co.com.sofka.questions.usecases.horse;
 
-import co.com.sofka.questions.collections.Horse;
 import co.com.sofka.questions.model.HorseDTO;
-import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.reposioties.HorseRepository;
 import co.com.sofka.questions.util.MapperHorse;
 import org.springframework.stereotype.Service;
