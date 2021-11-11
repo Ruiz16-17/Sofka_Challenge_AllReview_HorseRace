@@ -7,6 +7,7 @@ public class PlayerDTO {
     private String name;
     private int betCarriel;
     private Long money;
+    private Long moneyBet;
 
     public PlayerDTO() {
     }
@@ -24,6 +25,10 @@ public class PlayerDTO {
         this.name = name;
         this.betCarriel = betCarriel;
         this.money = money;
+    }
+
+    public Long getMoneyBet() {
+        return moneyBet;
     }
 
     public String getId() {

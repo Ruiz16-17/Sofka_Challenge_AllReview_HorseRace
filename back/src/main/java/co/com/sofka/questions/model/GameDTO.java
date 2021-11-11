@@ -7,23 +7,26 @@ public class GameDTO {
     private String idUser;
     private boolean inGame;
     private int laneWinner;
+    private Long moneyBet;
 
     public GameDTO() {
     }
 
-    public GameDTO(String idTrack, String idUser, boolean inGame, int laneWinner) {
+    public GameDTO(String idTrack, String idUser, boolean inGame, int laneWinner, Long moneyBet) {
         this.idTrack = idTrack;
         this.idUser = idUser;
         this.inGame = inGame;
         this.laneWinner = laneWinner;
+        this.moneyBet = moneyBet;
     }
 
-    public GameDTO(String id, String idTrack, String idUser, boolean inGame, int laneWinner) {
+    public GameDTO(String id, String idTrack, String idUser, boolean inGame, int laneWinner, Long moneyBet) {
         this.id = id;
         this.idTrack = idTrack;
         this.idUser = idUser;
         this.inGame = inGame;
         this.laneWinner = laneWinner;
+        this.moneyBet = moneyBet;
     }
 
     public String getId() {
@@ -64,5 +67,13 @@ public class GameDTO {
 
     public void setLaneWinner(int laneWinner) {
         this.laneWinner = laneWinner;
+    }
+
+    public Long getMoneyBet() {
+        return moneyBet;
+    }
+
+    public void setMoneyBet(Long moneyBet) {
+        this.moneyBet = moneyBet;
     }
 }

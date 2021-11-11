@@ -3,6 +3,7 @@ package co.com.sofka.questions.routers.game;
 import co.com.sofka.questions.model.GameDTO;
 import co.com.sofka.questions.model.TrackDTO;
 import co.com.sofka.questions.usecases.game.CreateGameUseCase;
+import co.com.sofka.questions.usecases.game.EarnedMoneyBetPlayerUseCase;
 import co.com.sofka.questions.usecases.game.GetGameUseCase;
 import co.com.sofka.questions.usecases.game.PlayGameUseCase;
 import co.com.sofka.questions.usecases.track.CreateTrackUseCase;
@@ -59,6 +60,19 @@ public class GameRouter {
 
         return route(
                 PUT("/playGame").and(accept(MediaType.APPLICATION_JSON)),
+                request -> request.bodyToMono(GameDTO.class).flatMap(executor)
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> earnedMoneyBetPlayer(EarnedMoneyBetPlayerUseCase earnedMoneyBetPlayerUseCase) {
+        Function<GameDTO, Mono<ServerResponse>> executor = gameDTO ->  earnedMoneyBetPlayerUseCase.playGame(gameDTO)
+                .flatMap(result -> ServerResponse.ok()
+                        .contentType(MediaType.TEXT_PLAIN)
+                        .bodyValue(result));
+
+        return route(
+                PUT("/earnedMoneyBetPlayer").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(GameDTO.class).flatMap(executor)
         );
     }

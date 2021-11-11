@@ -12,6 +12,15 @@ public class Game {
     private String idUser;
     private boolean inGame;
     private int laneWinner;
+    private Long moneyBet;
+
+    public Long getMoneyBet() {
+        return moneyBet;
+    }
+
+    public void setMoneyBet(Long moneyBet) {
+        this.moneyBet = moneyBet;
+    }
 
     public String getId() {
         return id;

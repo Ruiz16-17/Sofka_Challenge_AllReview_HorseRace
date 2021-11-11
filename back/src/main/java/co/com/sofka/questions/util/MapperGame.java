@@ -19,6 +19,7 @@ public class MapperGame {
             game.setIdUser(gameDTO.getIdUser());
             game.setInGame(gameDTO.isInGame());
             game.setLaneWinner(gameDTO.getLaneWinner());
+            game.setMoneyBet(gameDTO.getMoneyBet());
 
             return game;
         };
@@ -30,7 +31,8 @@ public class MapperGame {
                 entity.getIdTrack(),
                 entity.getIdUser(),
                 entity.isInGame(),
-                entity.getLaneWinner()
+                entity.getLaneWinner(),
+                entity.getMoneyBet()
         );
     }
 

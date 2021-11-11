@@ -2,11 +2,9 @@ package co.com.sofka.questions.routers.player;
 
 import co.com.sofka.questions.model.GameDTO;
 import co.com.sofka.questions.model.PlayerDTO;
-import co.com.sofka.questions.usecases.game.CreateGameUseCase;
-import co.com.sofka.questions.usecases.game.GetGameUseCase;
-import co.com.sofka.questions.usecases.game.PlayGameUseCase;
 import co.com.sofka.questions.usecases.player.CreatePlayerUseCase;
 import co.com.sofka.questions.usecases.player.GetPlayerUseCase;
+import co.com.sofka.questions.usecases.player.MakeBetPlayerUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -21,7 +19,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
-public class PLayerRouter {
+public class PlayerRouter {
 
     @Bean
     public RouterFunction<ServerResponse> createPlayer(CreatePlayerUseCase createPlayerUseCase) {
@@ -46,6 +44,19 @@ public class PLayerRouter {
                                         request.pathVariable("id")),
                                 PlayerDTO.class
                         ))
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> makeBetPlayer(MakeBetPlayerUseCase makeBetPlayerUseCase) {
+        Function<PlayerDTO, Mono<ServerResponse>> executor = playerDTO ->  makeBetPlayerUseCase.apply(playerDTO)
+                .flatMap(result -> ServerResponse.ok()
+                        .contentType(MediaType.TEXT_PLAIN)
+                        .bodyValue(result));
+
+        return route(
+                PUT("/makeBetPlayer").and(accept(MediaType.APPLICATION_JSON)),
+                request -> request.bodyToMono(PlayerDTO.class).flatMap(executor)
         );
     }
 
