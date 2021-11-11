@@ -1,9 +1,6 @@
 package co.com.sofka.questions.usecases.game;
 
-import co.com.sofka.questions.model.GameDTO;
-import co.com.sofka.questions.model.PlayerDTO;
 import co.com.sofka.questions.usecases.player.GetPlayerUseCase;
-import co.com.sofka.questions.usecases.player.UpdatePlayerUseCase;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;

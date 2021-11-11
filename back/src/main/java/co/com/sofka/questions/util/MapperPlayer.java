@@ -1,8 +1,6 @@
 package co.com.sofka.questions.util;
 
-import co.com.sofka.questions.collections.Game;
 import co.com.sofka.questions.collections.Player;
-import co.com.sofka.questions.model.GameDTO;
 import co.com.sofka.questions.model.PlayerDTO;
 import org.springframework.stereotype.Component;
 

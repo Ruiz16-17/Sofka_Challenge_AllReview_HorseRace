@@ -1,11 +1,6 @@
 package co.com.sofka.questions.routers.track;
 
-import co.com.sofka.questions.model.HorseDTO;
 import co.com.sofka.questions.model.TrackDTO;
-import co.com.sofka.questions.usecases.horse.CreateHorseUseCase;
-import co.com.sofka.questions.usecases.horse.GetHorseUseCase;
-import co.com.sofka.questions.usecases.horse.UpdateHorseUseCase;
-import co.com.sofka.questions.usecases.horse.UpdatePositionHorseUseCase;
 import co.com.sofka.questions.usecases.track.CreateTrackUseCase;
 import co.com.sofka.questions.usecases.track.GetTrackUseCase;
 import co.com.sofka.questions.usecases.track.MoveHorsesUseCase;

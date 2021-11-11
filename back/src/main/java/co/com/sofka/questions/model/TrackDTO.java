@@ -1,10 +1,5 @@
 package co.com.sofka.questions.model;
 
-import org.springframework.data.annotation.Id;
-
-import javax.validation.constraints.NotBlank;
-import java.util.Arrays;
-
 public class TrackDTO {
 
     private String id;

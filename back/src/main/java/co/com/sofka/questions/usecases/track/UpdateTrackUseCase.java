@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
-
 @Service
 @Validated
 public class UpdateTrackUseCase implements SaveTrack {

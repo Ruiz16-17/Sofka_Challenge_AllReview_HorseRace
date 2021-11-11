@@ -1,13 +1,8 @@
 package co.com.sofka.questions.usecases.track;
 
-import co.com.sofka.questions.model.TrackDTO;
-import co.com.sofka.questions.reposioties.TrackRepository;
-import co.com.sofka.questions.util.MapperTrack;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
-
-import java.util.function.Function;
 
 @Service
 @Validated

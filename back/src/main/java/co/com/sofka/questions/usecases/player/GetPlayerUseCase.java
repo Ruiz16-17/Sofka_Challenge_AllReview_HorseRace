@@ -1,6 +1,5 @@
 package co.com.sofka.questions.usecases.player;
 
-import co.com.sofka.questions.model.GameDTO;
 import co.com.sofka.questions.model.PlayerDTO;
 import co.com.sofka.questions.reposioties.PlayerRepository;
 import co.com.sofka.questions.util.MapperPlayer;

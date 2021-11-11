@@ -1,8 +1,6 @@
 package co.com.sofka.questions.util;
 
-import co.com.sofka.questions.collections.Horse;
 import co.com.sofka.questions.collections.Track;
-import co.com.sofka.questions.model.HorseDTO;
 import co.com.sofka.questions.model.TrackDTO;
 import org.springframework.stereotype.Component;
 

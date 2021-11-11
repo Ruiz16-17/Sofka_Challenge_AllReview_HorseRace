@@ -1,7 +1,5 @@
 package co.com.sofka.questions.usecases.track;
 
-import co.com.sofka.questions.model.GameDTO;
-import co.com.sofka.questions.model.TrackDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;

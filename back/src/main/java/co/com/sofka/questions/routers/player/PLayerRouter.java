@@ -1,6 +1,5 @@
 package co.com.sofka.questions.routers.player;
 
-import co.com.sofka.questions.model.GameDTO;
 import co.com.sofka.questions.model.PlayerDTO;
 import co.com.sofka.questions.usecases.player.CreatePlayerUseCase;
 import co.com.sofka.questions.usecases.player.GetPlayerUseCase;

@@ -1,9 +1,7 @@
 package co.com.sofka.questions.util;
 
 import co.com.sofka.questions.collections.Game;
-import co.com.sofka.questions.collections.Track;
 import co.com.sofka.questions.model.GameDTO;
-import co.com.sofka.questions.model.TrackDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

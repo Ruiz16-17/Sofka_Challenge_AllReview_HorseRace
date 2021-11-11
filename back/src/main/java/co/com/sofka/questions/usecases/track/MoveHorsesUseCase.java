@@ -1,14 +1,9 @@
 package co.com.sofka.questions.usecases.track;
 
 import co.com.sofka.questions.model.TrackDTO;
-import co.com.sofka.questions.reposioties.TrackRepository;
-import co.com.sofka.questions.util.MapperTrack;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.yaml.snakeyaml.util.ArrayUtils;
 import reactor.core.publisher.Mono;
-
-import java.util.Arrays;
 
 @Service
 @Validated
