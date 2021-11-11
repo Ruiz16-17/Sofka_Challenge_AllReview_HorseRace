@@ -26,7 +26,7 @@ public class CreateGameUseCase implements SaveGame {
 
     @Override
     public Mono<String> apply(GameDTO gameDTO) {
-
+        gameDTO.setLaneWinner(-1);
         return gameRepository
                 .save(mapperGame.mapperToGame(null).apply(gameDTO))
                 .map(Game::getId);

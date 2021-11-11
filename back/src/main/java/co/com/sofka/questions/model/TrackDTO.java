@@ -13,25 +13,28 @@ public class TrackDTO {
     private int[] lanes;
     private int[][] racecourse;
     private boolean isCompleted;
+    private int laneWinner;
 
     public TrackDTO() {
     }
 
-    public TrackDTO(String name, int km, int[] lanes, int[][] racecourse, boolean isCompleted) {
+    public TrackDTO(String name, int km, int[] lanes, int[][] racecourse, boolean isCompleted, int laneWinner) {
         this.name = name;
         this.km = km;
         this.lanes = lanes;
         this.racecourse = racecourse;
         this.isCompleted = isCompleted;
+        this.laneWinner = laneWinner;
     }
 
-    public TrackDTO(String id, String name, int km, int[] lanes, int[][] racecourse, boolean isCompleted) {
+    public TrackDTO(String id, String name, int km, int[] lanes, int[][] racecourse, boolean isCompleted, int laneWinner) {
         this.id = id;
         this.name = name;
         this.km = km;
         this.lanes = lanes;
         this.racecourse = racecourse;
         this.isCompleted = isCompleted;
+        this.laneWinner = laneWinner;
     }
 
     public String getId() {
@@ -80,5 +83,13 @@ public class TrackDTO {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
+    }
+
+    public int getLaneWinner() {
+        return laneWinner;
+    }
+
+    public void setLaneWinner(int laneWinner) {
+        this.laneWinner = laneWinner;
     }
 }

@@ -57,7 +57,6 @@ public class MoveHorsesUseCase {
     }
 
     private TrackDTO moveHorses(TrackDTO trackDTO){
-
         final int lanes = trackDTO.getLanes().length;
         final int km = trackDTO.getKm()*10;
 
@@ -76,6 +75,8 @@ public class MoveHorsesUseCase {
             }
             if(position >= km-1){
                 racecourse[lanes-1][km-1] = trackDTO.getLanes()[i];
+                trackDTO.setLaneWinner(i);
+                System.out.println("Finalizado");
             }
         }
 
@@ -84,12 +85,14 @@ public class MoveHorsesUseCase {
         if(isTrackCompleted(racecourse,lanes)){
             trackDTO.setCompleted(true);
         }
+
         return trackDTO;
     }
 
     public Mono<String> apply(String idTrack) {
         return getTrackUseCase.apply(idTrack).flatMap(
                 foundTrackDTO -> updateTrackUseCase.apply(moveHorses(foundTrackDTO))
+
         );
     }
 

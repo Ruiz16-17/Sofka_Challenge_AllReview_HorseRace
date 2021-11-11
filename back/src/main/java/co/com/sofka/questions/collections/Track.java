@@ -13,6 +13,15 @@ public class Track {
     private int[] lanes;
     private int[][] racecourse;
     private boolean isCompleted;
+    private int laneWinner;
+
+    public int getLaneWinner() {
+        return laneWinner;
+    }
+
+    public void setLaneWinner(int laneWinner) {
+        this.laneWinner = laneWinner;
+    }
 
     public boolean isCompleted() {
         return isCompleted;

@@ -20,6 +20,7 @@ public class MapperTrack {
             track.setName(trackDTO.getName());
             track.setRacecourse(trackDTO.getRacecourse());
             track.setCompleted(trackDTO.isCompleted());
+            track.setLaneWinner(trackDTO.getLaneWinner());
             return track;
         };
     }
@@ -31,7 +32,8 @@ public class MapperTrack {
                 entity.getKm(),
                 entity.getLanes(),
                 entity.getRacecourse(),
-                entity.isCompleted()
+                entity.isCompleted(),
+                entity.getLaneWinner()
         );
     }
 

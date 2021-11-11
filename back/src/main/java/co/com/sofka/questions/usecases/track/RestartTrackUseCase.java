@@ -24,6 +24,7 @@ public class RestartTrackUseCase {
                 foundTRackDTO ->{
                     foundTRackDTO.setRacecourse(new int[foundTRackDTO.getLanes().length][foundTRackDTO.getKm()*10]);
                     foundTRackDTO.setCompleted(false);
+                    foundTRackDTO.setLaneWinner(-1);
                     return updateTrackUseCase.apply(foundTRackDTO);
                 }
         ).map(message -> "¡Finish!");
