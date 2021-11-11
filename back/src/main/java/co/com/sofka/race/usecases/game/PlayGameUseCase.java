@@ -26,7 +26,6 @@ public class PlayGameUseCase {
         this.restartTrackUseCase = restartTrackUseCase;
     }
 
-
     private Mono<String> verifyGameState(GameDTO gameDTO) {
         return getTrackUseCase.apply(gameDTO.getIdTrack())
                 .flatMap(

@@ -26,7 +26,7 @@ public class GetLaneWinnerTrackUseCase  {
             }
         }
 
-        return 0;
+        return -1;
     }
 
 
