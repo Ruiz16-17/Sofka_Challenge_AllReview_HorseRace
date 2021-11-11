@@ -9,6 +9,7 @@ import co.com.sofka.questions.usecases.horse.UpdatePositionHorseUseCase;
 import co.com.sofka.questions.usecases.track.CreateTrackUseCase;
 import co.com.sofka.questions.usecases.track.GetTrackUseCase;
 import co.com.sofka.questions.usecases.track.MoveHorsesUseCase;
+import co.com.sofka.questions.usecases.track.RestartTrackUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -61,6 +62,19 @@ public class TrackRouter {
         return route(
                 PUT("/moveHorse").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(TrackDTO.class).flatMap(executor)
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> restartTrack(RestartTrackUseCase restartTrackUseCase) {
+
+        return route(
+                PUT("/restartTrack/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(restartTrackUseCase.apply(
+                                request.pathVariable("id")
+                        ),String.class))
         );
     }
 }

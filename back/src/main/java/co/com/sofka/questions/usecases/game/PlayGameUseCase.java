@@ -1,9 +1,9 @@
 package co.com.sofka.questions.usecases.game;
 
 import co.com.sofka.questions.model.GameDTO;
-import co.com.sofka.questions.model.TrackDTO;
 import co.com.sofka.questions.usecases.track.GetTrackUseCase;
 import co.com.sofka.questions.usecases.track.MoveHorsesUseCase;
+import co.com.sofka.questions.usecases.track.RestartTrackUseCase;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
@@ -16,12 +16,14 @@ public class PlayGameUseCase {
     private final GetGameUseCase getGameUseCase;
     private final GetTrackUseCase getTrackUseCase;
     private final FinishGameUseCase finishGameUseCase;
+    private final RestartTrackUseCase restartTrackUseCase;
 
-    public PlayGameUseCase(MoveHorsesUseCase moveHorsesUseCase, GetGameUseCase getGameUseCase, GetTrackUseCase getTrackUseCase, FinishGameUseCase finishGameUseCase) {
+    public PlayGameUseCase(MoveHorsesUseCase moveHorsesUseCase, GetGameUseCase getGameUseCase, GetTrackUseCase getTrackUseCase, FinishGameUseCase finishGameUseCase, RestartTrackUseCase restartTrackUseCase) {
         this.moveHorsesUseCase = moveHorsesUseCase;
         this.getGameUseCase = getGameUseCase;
         this.getTrackUseCase = getTrackUseCase;
         this.finishGameUseCase = finishGameUseCase;
+        this.restartTrackUseCase = restartTrackUseCase;
     }
 
 
@@ -48,7 +50,7 @@ public class PlayGameUseCase {
 
                     }
                     if (!foundGameDTO.isInGame()) {
-                        return Mono.just("¡Finish!");
+                        return restartTrackUseCase.apply(foundGameDTO.getIdTrack());
                     }
 
                     return Mono.just("¡Error!");
