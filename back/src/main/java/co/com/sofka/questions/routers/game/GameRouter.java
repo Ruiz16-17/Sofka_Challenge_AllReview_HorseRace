@@ -1,14 +1,7 @@
 package co.com.sofka.questions.routers.game;
 
 import co.com.sofka.questions.model.GameDTO;
-import co.com.sofka.questions.model.TrackDTO;
-import co.com.sofka.questions.usecases.game.CreateGameUseCase;
-import co.com.sofka.questions.usecases.game.EarnedMoneyBetPlayerUseCase;
-import co.com.sofka.questions.usecases.game.GetGameUseCase;
-import co.com.sofka.questions.usecases.game.PlayGameUseCase;
-import co.com.sofka.questions.usecases.track.CreateTrackUseCase;
-import co.com.sofka.questions.usecases.track.GetTrackUseCase;
-import co.com.sofka.questions.usecases.track.MoveHorsesUseCase;
+import co.com.sofka.questions.usecases.game.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -65,15 +58,28 @@ public class GameRouter {
     }
 
     @Bean
-    public RouterFunction<ServerResponse> earnedMoneyBetPlayer(EarnedMoneyBetPlayerUseCase earnedMoneyBetPlayerUseCase) {
-        Function<GameDTO, Mono<ServerResponse>> executor = gameDTO ->  earnedMoneyBetPlayerUseCase.playGame(gameDTO)
+    public RouterFunction<ServerResponse> earnedMoneyBetPlayer(EarnedMoneyBetPlayerGameUseCase earnedMoneyBetPlayerGameUseCase) {
+        Function<GameDTO, Mono<ServerResponse>> executor = gameDTO ->  earnedMoneyBetPlayerGameUseCase.apply(gameDTO)
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.TEXT_PLAIN)
                         .bodyValue(result));
 
         return route(
-                PUT("/earnedMoneyBetPlayer").and(accept(MediaType.APPLICATION_JSON)),
+                GET("/earnedMoneyBetPlayer").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(GameDTO.class).flatMap(executor)
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> winnerGamePlayer(WinnerGameUseCase winnerGameUseCase) {
+        return route(
+                GET("/winnerGamePlayer/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(winnerGameUseCase.apply(
+                                        request.pathVariable("id")),
+                                String.class
+                        ))
         );
     }
 

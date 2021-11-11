@@ -16,19 +16,19 @@ import java.security.PrivilegedAction;
 
 @Service
 @Validated
-public class EarnedMoneyBetPlayerUseCase {
+public class EarnedMoneyBetPlayerGameUseCase {
 
     private final GetGameUseCase getGameUseCase;
     private final UpdatePlayerUseCase updatePlayerUseCase;
     private final GetPlayerUseCase getPlayerUseCase;
 
-    public EarnedMoneyBetPlayerUseCase(GetGameUseCase getGameUseCase, UpdatePlayerUseCase updatePlayerUseCase, GetPlayerUseCase getPlayerUseCase) {
+    public EarnedMoneyBetPlayerGameUseCase(GetGameUseCase getGameUseCase, UpdatePlayerUseCase updatePlayerUseCase, GetPlayerUseCase getPlayerUseCase) {
         this.getGameUseCase = getGameUseCase;
         this.updatePlayerUseCase = updatePlayerUseCase;
         this.getPlayerUseCase = getPlayerUseCase;
     }
 
-    public Mono<String> playGame(GameDTO gameDTO) {
+    public Mono<String> apply(GameDTO gameDTO) {
 
         return getGameUseCase.apply(gameDTO.getId())
                 .flatMap(
