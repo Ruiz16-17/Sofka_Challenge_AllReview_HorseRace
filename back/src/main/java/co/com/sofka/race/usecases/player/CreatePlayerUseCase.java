@@ -24,7 +24,7 @@ public class CreatePlayerUseCase implements SavePlayer {
     public Mono<String> apply(PlayerDTO playerDTO) {
         playerDTO.setMoney(5000L);
         return playerRepository
-                .save(mapperPlayer.mapperToPlayer(null).apply(playerDTO))
+                .save(mapperPlayer.mapperToPlayer(playerDTO.getId()).apply(playerDTO))
                 .map(Player::getId);
     }
 
